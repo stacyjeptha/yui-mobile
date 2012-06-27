@@ -2,5 +2,10 @@
 
 YUI.add('yuimobile.page', function (Y) {
 
-    console.log('xxx');
-});
+    Y.namespace('Mobile');
+
+    Y.Mobile.Page = {
+
+    };
+
+}, '1.0.0');
