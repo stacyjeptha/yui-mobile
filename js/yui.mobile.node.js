@@ -6,8 +6,6 @@ YUI.add('yuimobile.node', function (Y) {
 
     prototype.wrapInner = function (html) {
 
-        console.log(html);
-
         var wrapper     = Y.Node.create(html),
             container   = wrapper.one('*:empty') || wrapper,
             content     = this.all('> *');
