@@ -2,34 +2,53 @@
 
 YUI().use([
     'yuimobile.core',
-    'yuimobile.node',
-    'yuimobile.page'
+    'widgets.page',
+    'widgets.loader',
 ], function (Y) {
 
-    var YM = Y.Mobile;
+    var YM          = Y.Mobile,
+        YMW         = YM.Widgets,
 
-    Y.mix(YM, {
+        html        = Y.one('html');
+        pageHTML    = '<div data-role="page"></div>';
 
-        pageHTML: '<div data-role="page"></div>',
+    // set-up objects.
+    YM.widgets = {};
 
-        buildPage: function () {
+    // set-up events.
+    Y.publish('ym:pagecreate', { context: YM })
 
-            var pages = Y.all(':ym(role=page)');
+    // set-up rendering CSS classes.
+    html.addClass('ym ym-rendering');
 
-            // create a page if none exists.
-            if (!pages.size()) {
-                pages = Y.one('body').wrapInner(this.pageHTML);
-            }
+    function hideRenderingClass() {
+    
+        html.removeClass('ym-rendering');
+    }
 
-            // define first page.
-            YM.firstPage = pages.item(0);
+    function buildPage() {
 
-            // define page container.
-            YM.pageContainer = pages.item(0).get('parentNode').addClass('ym-viewport');
+        var pages = Y.all(':ym(role=page)');
+
+        // create a page if none exists.
+        if (!pages.size()) {
+            pages = Y.one('body').wrapInner(this.pageHTML);
         }
-    });
 
+        YM.firstPage        = pages.item(0);
+        YM.pageContainer    = pages.item(0).get('parentNode').addClass('ym-viewport');
+
+        Y.fire('ym:pagecreate');
+
+        // show loader.
+        YM.widgets.loader.show();
+
+        // remove rending class.
+        hideRenderingClass();
+    };
+
+    setTimeout(hideRenderingClass, 5000);
 
     window.scrollTo(0, 1);
-    YM.buildPage();
+    buildPage();
 });

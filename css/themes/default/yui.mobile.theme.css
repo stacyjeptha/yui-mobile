@@ -1,0 +1,26 @@
+.ym-body-a,
+.ym-overlay-a {
+    border: 1px solid #888;
+    background: #666;
+    color: #fff;
+    text-shadow: 0 1px 1px #111;
+    font-weight: normal;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#888), to(#666));
+    background-image: -webkit-linear-gradient(#888, #666);
+    background-image: -moz-linear-gradient(#888, #666);
+    background-image: -ms-linear-gradient(#888, #666);
+    background-image: -o-linear-gradient(#888, #666);
+    background-image: linear-gradient(#888, #666);   
+}
+
+/* round corners */
+.ym-corner-all {
+    -moz-border-radius: .6em;
+    -webkit-border-radius: .6em;
+    border-radius: .6em;
+}
+
+/* loader */
+.ym-icon-loading {
+    background: url(http://l.yimg.com/a/i/us/per/gr/gp/rel_interstitial_loading.gif);
+}
