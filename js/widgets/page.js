@@ -1,11 +1,22 @@
 /*globals YUI*/
 
-YUI.add('yuimobile.page', function (Y) {
+YUI.add('widgets.page', function (Y) {
 
-    Y.namespace('Mobile');
+    function Page(config) {
 
-    Y.Mobile.Page = {
+        Page.superclass.constructor.apply(this, arguments);
+    }
 
-    };
+    Page.NAME   = 'Page';
+    Page.NS     = 'Widgets';
 
-}, '1.0.0');
+    Y.extend(Page, Y.Widget, {
+
+        initializer: function () {
+
+        }
+    });
+
+    Y.namespace('Mobile.Widgets').Page = Page;
+
+}, '1.0.0', { requires: ['widget', 'event-custom'] });

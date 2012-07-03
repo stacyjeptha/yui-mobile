@@ -2,11 +2,12 @@
 
 YUI.add('yuimobile.core', function (Y) {
 
-    var selectorRE = /:ym\(([^)]*)\)/g;
-
     Y.namespace('Mobile');
 
-    Y.Mobile.Core = {
+    var selectorRE  = /:ym\(([^)]*)\)/g,
+        YM          = Y.Mobile;
+
+    YM.Core = {
 
     };
 
@@ -18,6 +19,5 @@ YUI.add('yuimobile.core', function (Y) {
 
     }, Y.Selector, 'query');
 
-
-}, '1.0.0', { requires: ['node', 'selector'] });
+}, '1.0.0', { requires: ['node', 'yuimobile.node'] });
 
