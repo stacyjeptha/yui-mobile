@@ -2,10 +2,10 @@
 
 YUI.add('widgets.loader', function (Y) {
 
-    Y.namespace('Mobile.Widgets');
-
     var YM              = Y.Mobile,
-        YMW             = YM.Widgets,
+
+        win             = Y.one(window),
+        html            = Y.one('html'),
        
         BOUNDING_BOX    = 'boundingBox',
         CONTENT_BOX     = 'contentBox',
@@ -70,16 +70,26 @@ YUI.add('widgets.loader', function (Y) {
          */
         show: function () {
 
-            Y.one('html').addClass('ym-loading');
+            html.addClass('ym-loading');
             this._loader.addClass('ym-corner-all ym-body-a ym-loader-default');
+        },
+
+        /**
+         * Hide loader.
+         *
+         * @method hide
+         */
+        hide: function () {
+        
+            html.removeClass('ym-loading');
         }
     });
 
-    YMW.Loader = Loader;
+    Y.namespace('Mobile.Widgets').Loader = Loader;
 
-    Y.on('ym:pagecreate', function () {
+    win.on('pagecontainercreate', function () {
 
-        YM.widgets.loader = YM.widgets.loader || new YMW.Loader().render();
+        Y.Mobile.widgets.loader = YM.widgets.loader || new YM.Widgets.Loader().render();
     });
 
 }, '1.0.0', { requires: ['widget'] });

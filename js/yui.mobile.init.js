@@ -1,22 +1,20 @@
-/*global YUI*/
+/*global YUI, window*/
 
-YUI().use([
-    'yuimobile.core',
-    'widgets.page',
-    'widgets.loader',
-], function (Y) {
+YUI().use(['yuimobile.node', 'yuimobile.core', 'yuimobile.navigation', 'widgets.loader'], function (Y) {
 
     var YM          = Y.Mobile,
         YMW         = YM.Widgets,
 
-        html        = Y.one('html');
+        win         = Y.one(window),
+        html        = Y.one('html'),
+
         pageHTML    = '<div data-role="page"></div>';
 
     // set-up objects.
-    YM.widgets = {};
+    Y.Mobile.widgets = {};
 
     // set-up events.
-    Y.publish('ym:pagecreate', { context: YM })
+    Y.publish('pagecreate', { context: YM });
 
     // set-up rendering CSS classes.
     html.addClass('ym ym-rendering');
@@ -38,17 +36,23 @@ YUI().use([
         YM.firstPage        = pages.item(0);
         YM.pageContainer    = pages.item(0).get('parentNode').addClass('ym-viewport');
 
-        Y.fire('ym:pagecreate');
+        win.fire('pagecontainercreate');
 
         // show loader.
         YM.widgets.loader.show();
 
         // remove rending class.
         hideRenderingClass();
-    };
+
+        YM.changePage(YM.firstPage);
+    }
 
     setTimeout(hideRenderingClass, 5000);
 
+    YM.navReady();
+
     window.scrollTo(0, 1);
+    YM.defaultHomeScroll = (window.pageYOffest === 1) ? 0 : 1;
+
     buildPage();
 });

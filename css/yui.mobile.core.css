@@ -3,6 +3,17 @@
     height: 99.9%;
 }
 
+.ym fieldset,
+.ym-page {
+    padding: 3px;
+    margin: 0;
+}
+
+.ym a img,
+.ym fieldset {
+    border-width: 0;
+}
+
 .ym-viewport {
     margin: 0;
     overflow-x: visible;
@@ -84,4 +95,87 @@ div.ym-viewport {
 
 .ym-rendering  > * {
     visibility: hidden;
+}
+
+/*headers, content panels*/
+.ym-bar, .ym-body {
+    position: relative;
+    padding: .4em 15px;
+    overflow: hidden;
+    display: block;
+    clear:both;
+}
+
+.ym-bar {
+    font-size: 16px;
+    margin: 0;
+}
+
+.ym-bar h1,
+.ym-bar h2,
+.ym-bar h3,
+.ym-bar h4,
+.ym-bar h5,
+.ym-bar h6 {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    display: inline-block;
+}
+
+.ym-header,
+.ym-footer {
+    position: relative;
+    border-left-width: 0;
+    border-right-width: 0;
+    zoom: 1;
+}
+
+.ym-header .ym-btn-left,
+.ym-header .ym-btn-right,
+.ym-footer .ym-btn-left,
+.ym-footer .ym-btn-right {
+    position: absolute;
+    top: 3px;
+}
+
+.ym-header .ym-btn-left,
+.ym-footer .ym-btn-left {
+    left: 5px;
+}
+
+.ym-header .ym-btn-right,
+.ym-footer .ym-btn-right {
+    right: 5px;
+}
+
+.ym-footer .ym-btn-icon-notext,
+.ym-header .ym-btn-icon-notext {
+    top: 6px;
+}
+
+.ym-header .ym-title,
+.ym-footer .ym-title {
+    min-height: 1.1em;
+    text-align: center;
+    font-size: 16px;
+    display: block;
+    margin: .6em 30% .8em;
+    padding: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    outline: 0 !important;
+}
+
+.ym-footer .ym-title {
+    margin: .6em 15px .8em;
+}
+
+/*content area*/
+.ym-content {
+    border-width: 0;
+    overflow: visible;
+    overflow-x: hidden;
+    padding: 15px;
 }

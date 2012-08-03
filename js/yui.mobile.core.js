@@ -1,14 +1,22 @@
-/*globals YUI*/
+/*globals YUI, window*/
 
 YUI.add('yuimobile.core', function (Y) {
 
     Y.namespace('Mobile');
 
-    var selectorRE  = /:ym\(([^)]*)\)/g,
-        YM          = Y.Mobile;
+    var YM              = Y.Mobile,
+        win             = Y.one(window),
 
-    YM.Core = {
+        selectorRE      = /:ym\(([^)]*)\)/g;
 
+    Y.Mobile = {
+
+        activePageClass: 'ym-page-active',
+
+        getScreenHeight: function () {
+            
+            return window.innerHeight || win.getComputedStyle('height');
+        }
     };
 
     // intercept Y.Selector.query method to filter the :ym selector.
